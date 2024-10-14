@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문서</title>
+
+    {% load static %}
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        header {
+            height: 100px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            top:120px;
+            width: 100%;
+            max-width: 1100px;
+            height: 580px;
+            margin: 5px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.874);
+        }
+
+
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            padding-left: 280px;
+        }
+
+        .img {
+            width: 350px;
+            height: auto;
+            margin: 0;
+            left: 20px;
+            background-color: transparent;
+            position: absolute;
+        }
+
+        .box {
+            background-color: transparent;
+            font-size: 20px;
+            margin: 10px;
+            color: gray;
+            width: 180px;
+            cursor: pointer;
+            text-align: center;
+            flex-direction: row;
+        }
+
+        button {
+            display: inline-block;
+            padding: 0;
+            font-size: 18px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin: 0 5px;
+        }
+
+        button:hover {
+            background-color: transparent;
+        }
+
+        button.active {
+            color: rgb(0, 0, 0);
+            font-weight: bold;
+        }
+
+        .btn-about {
+            width: 100px;
+        }
+
+        .btn-career {
+            width: 80px;
+        }
+
+        .btn-project1 {
+            width: 100px;
+        }
+
+        .btn-project2 {
+            width: 150px;
+        }
+
+        .section {
+            height: calc(100vh - 100px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-top: 100px;
+        }
+
+        .about-section {
+            padding-top: 100px;
+        }
+        .project1-section {
+            padding-top: 400px; /* 원하는 만큼 여백을 추가 */
+        }
+
+        .project2-section {
+            margin-top: 50px; /* 원하는 만큼 여백을 추가 */
+        }
+
+        .title{
+            font-size: 25px;
+            font-style: normal;
+            font-weight: 600; 
+            position: absolute;
+            top: -1px;
+            left: 175px;
+            z-index: 1;
+            position: relative;
+        }
+        .content {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            flex-direction: row;
+        }
+
+        .photo {
+            width: 340px;
+            height: auto;
+            border-radius: 3rem;
+            margin-left: 10px;
+            margin-right: 30px;
+            position: relative;
+            bottom: 50px;
+            left:10px;
+        }
+
+        .text-container {
+            bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            margin-left: 50px;
+            margin-bottom: 5px;
+        }
+
+        .text-container2 {
+            bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            width: 70%;
+            margin-left: 50px;
+            position: relative;
+            left:-10px;
+            margin-bottom: 10px;
+        }
+
+
+        h1 {
+            font-size: 20px;
+            color: rgb(54, 162, 250);
+            text-align: left; 
+            margin-top: 15px;
+        }
+
+        .word1, .word2 {
+            font-size: 18px;
+            margin-left: 10px;
+            text-align: left;
+            
+        }
+        .skill {
+            width: 250px;
+            height: 100px;
+            margin-left: 5px;
+            
+        }
+       
+
+        .explanation {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .career {
+            width: 900px;
+            height: 300px;
+        }
+
+        .button1 {
+            font-size: 18px;
+            padding: 10px 10px;
+            background-color: lightslategray;
+            color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top:50px;
+            
+        }
+        .button1:hover {
+            background-color: #919291e0;
+        }
+
+        .button1 a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+        }
+        
+
+        h2 {
+            font-size: 30px;
+            color: rgb(54, 162, 250);
+            text-align: left; 
+            margin-top: 0px;
+        }
+        
+        .word3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            text-align: left;
+            
+        }
+        h3 {
+            font-size: 30px;
+            color: rgb(54, 162, 250);
+            text-align: left; 
+            margin-top: 0px;
+        }
+     
+        .button2 {
+            font-size: 18px;
+            padding: 10px 10px;
+            background-color: lightslategray;
+            color: #f0f0f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top: -30px;
+            right:10px:
+            
+        }
+        .button2:hover {
+            background-color: #919291e0;
+        }
+
+        .button2 a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class = "container">
+    <header class="header">
+        <nav class="nav">
+            <img src="{% static 'images/mini.png' %}" alt="로고" class="img">
+            <button class="menu1 box btn-about" onclick="scrollToSection('#about',this)">#기본정보</button>
+            <button class="menu2 box btn-career" onclick="scrollToSection('#career',this)">#경력</button>
+            <button class="menu3 box btn-project1" onclick="scrollToSection('#project1',this)">#프로젝트1</button>
+            <button class="menu5 box btn-project2" onclick="scrollToSection('#project2',this)">#프로젝트2</button>
+        </nav>
+    </header>
+
+   
+    <div id="about" class="section about-section">
+        <div class = "title">
+            <span style="color:green;  font-weight:bold;">"아이디어"</span> 를 이어붙이는<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span style="color:green; font-weight: bold;">"딱풀"</span>같은 데이터분석가 
+            <span style="color:green; font-weight: bold;">김민희</span></div> 
+        <div class="content">
+            <img src="{% static 'images/photo.jpg' %}" alt="김민희" class="photo">
+            <div class="text-container">
+                <h1>ABOUT ME</h1>
+                <div class="word1">KIM MIN HEE / 김민희 <br>1992.09.15 (만 32세) <br> 충북 청주시 거주</div>
+                <h1>CONTACT</h1>
+                <div class="word2">☎ 010-4783-0915 <br> minitime0@naver.com</div>
+                <h1>SKILL</h1>
+                <img src ="{% static 'images/skill.png' %}" alt ="기술" class="skill">
+            </div>
+            <div class="text-container2">
+                <h1>CERTIFICATE</h1>
+                <div class="word1"> 2024.06  데이터분석준전문가(ADsP) <br> 2024.09 SQL개발자(SQLD자격) <br>필기합격 빅데이터 분석기사 (실기 예정)</div>
+                <h1>EDUCATION</h1>
+                <div class="word2">24년도 채용연계형 SW전문인재 양성과정<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(2024.03.25 ~ 2024.09.13)</div>
+                <button class = "button1"> 
+                    <a href="{% static 'pdf/resume.pdf' %}" download="김민희_이력서.pdf">이력서 다운로드</a>
+                </button>
+                <br><br>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="career" class="section career-section">
+    <h2>지속적인 성장과 발전</h2>
+    <div class = "word3">경력이 지원하는 직무와 직접적인 관련은 없지만, 끊임없이 저를 성장시키기 위해 노력해왔습니다.<br>
+        지금까지 살아온 삶과 마찬가지로, 새로운 도전 직무에서도 꾸준히 관련 지식을 습득하며 업무에
+        <br>적극적으로 임하겠습니다.</div>
+    <img src="{% static 'images/career.png' %}" alt="경력" class="career">
+</div>
+
+<div id="project1" class="section project1-section">
+    <h3>피부 상태 예측 프로그램</h3>
+    <div style="display: flex; align-items: flex-start;">
+    <iframe width="560" height="350"
+        src="https://www.youtube.com/embed/epQvaJVUMek"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen style="float: left; margin-right: 20px;"></iframe>
+
+    <div style="float: left; max-width: 500px; text-align: justify; word-break: keep-all; font-size: 20px;">
+        <p>
+            이 프로그램은 피부과에 가지 않고도 집에서 웹캠을 통해 얼굴을 촬영하여 피부 상태를 파악할 수 있습니다. 합성곱 신경망을 활용한 모델 분석으로 수분, 주름, 탄력, 색소침착 등의 데이터를 측정하고, 이를 등급별 카드 이미지로 제공하며 피부 개선 조언을 제공합니다.     
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;">프로젝트의 역할:</span> 프로젝트 핸들링, 웹페이지 디자인, 모델링
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;"> 사용한 프로그램: </span>Django,Python,TensorFlow
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;"> 모델 정확도: </span> 40 ~ 60 %
+        </p>
+        <button class = "button2" style="float:right;"> 
+        <a href="{% static 'pdf/project1.pdf' %}" download="피부 상태 예측 프로그램 설명.pdf">상세설명 다운로드</a>
+        </button>
+    </div>
+    
+</div>
+
+<div id="project2" class="section project2-section">
+        <h3>피부 상태 예측 프로그램</h3>
+    <div style="display: flex; align-items: flex-start; ">
+    <iframe width="560" height="350"
+        src="https://www.youtube.com/embed/epQvaJVUMek"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen style="float: left; margin-right: 20px;"></iframe>
+
+    <div style="float: left; max-width: 500px; text-align: justify; word-break: keep-all; font-size: 20px;">
+        <p>
+            이 프로그램은 피부과에 가지 않고도 집에서 웹캠을 통해 얼굴을 촬영하여 피부 상태를 파악할 수 있습니다. 합성곱 신경망을 활용한 모델 분석으로 수분, 주름, 탄력, 색소침착 등의 데이터를 측정하고, 이를 등급별 카드 이미지로 제공하며 피부 개선 조언을 제공합니다.     
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;">프로젝트의 역할:</span> 프로젝트 핸들링, 웹페이지 디자인, 모델링
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;"> 사용한 프로그램: </span>Django,Python,TensorFlow
+        </p>
+        <p>
+            <span style="color:green;  font-weight:bold;"> 모델 정확도: </span> 40 ~ 60 %
+        </p>
+        <button class = "button2" style="float:right;"> 
+        <a href="{% static 'pdf/project1.pdf' %}" download="피부 상태 예측 프로그램 설명.pdf">상세설명 다운로드</a>
+        </button>
+    </div>
+    
+</div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId, clickedButon) {
+            const button = document.querySelectorAll("button");
+            button.forEach(button => {
+                button.classList.remove("active");
+            });
+
+            clickedButon.classList.add("active");
+
+            document.querySelector(sectionId).scrollIntoView({
+                behavior: 'smooth'
+                
+                
+            });
+        }
+    </script>
+
+</body>
+
+</html>
